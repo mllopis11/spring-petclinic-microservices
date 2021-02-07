@@ -8,7 +8,7 @@ and the Eureka Service Discovery from the [Spring Cloud Netflix](https://github.
 
 ## Starting services locally without Docker
 
-Every microservice is a Spring Boot application and can be started locally using IDE or `../mvnw spring-boot:run` command. Please note that supporting services (Config and Discovery Server) must be started before any other application (Customers, Vets, Visits and API).
+Every microservice is a Spring Boot application and can be started locally using IDE ([Lombok](https://projectlombok.org/) plugin has to be set up) or `../mvnw spring-boot:run` command. Please note that supporting services (Config and Discovery Server) must be started before any other application (Customers, Vets, Visits and API).
 Startup of Tracing server, Admin server, Grafana and Prometheus is optional.
 If everything goes well, you can access the following services at given location:
 * Discovery Server - http://localhost:8761
@@ -99,18 +99,17 @@ A JMeter load testing script is available to stress the application and generate
 
 ### Using Prometheus
 
-* Prometheus can be accessed from your local machine at [http://localhost:9091]()
+* Prometheus can be accessed from your local machine at http://localhost:9091
 
 ### Using Grafana with Prometheus
 
 * An anonymous access and a Prometheus datasource are setup.
-* A `Spring Petclinic Metrics` Dashboard is available at the URL [http://localhost:3000/d/69JXeR0iw/spring-petclinic-metrics]().
+* A `Spring Petclinic Metrics` Dashboard is available at the URL http://localhost:3000/d/69JXeR0iw/spring-petclinic-metrics.
 You will find the JSON configuration file here: [docker/grafana/dashboards/grafana-petclinic-dashboard.json]().
 * You may create your own dashboard or import the [Micrometer/SpringBoot dashboard](https://grafana.com/dashboards/4701) via the Import Dashboard menu item.
 The id for this dashboard is `4701`.
 
 ### Custom metrics
-
 Spring Boot registers a lot number of core metrics: JVM, CPU, Tomcat, Logback... 
 The Spring Boot auto-configuration enables the instrumentation of requests handled by Spring MVC.
 All those three REST controllers `OwnerResource`, `PetResource` and `VisitResource` have been instrumented by the `@Timed` Micrometer annotation at class level.
@@ -142,7 +141,7 @@ All those three REST controllers `OwnerResource`, `PetResource` and `VisitResour
 
 ## Interesting Spring Petclinic forks
 
-The Spring Petclinic master branch in the main [spring-projects](https://github.com/spring-projects/spring-petclinic)
+The Spring Petclinic `main` branch in the main [spring-projects](https://github.com/spring-projects/spring-petclinic)
 GitHub org is the "canonical" implementation, currently based on Spring Boot and Thymeleaf.
 
 This [spring-petclinic-microservices](https://github.com/spring-petclinic/spring-petclinic-microservices/) project is one of the [several forks](https://spring-petclinic.github.io/docs/forks.html) 
