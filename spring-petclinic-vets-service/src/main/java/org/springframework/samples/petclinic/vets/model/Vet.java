@@ -15,29 +15,13 @@
  */
 package org.springframework.samples.petclinic.vets.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.xml.bind.annotation.XmlElement;
-
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.xml.bind.annotation.XmlElement;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
+
+import java.util.*;
 
 /**
  * Simple JavaBean domain object representing a veterinarian.
@@ -55,20 +39,14 @@ public class Vet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Integer id;
 
     @Column(name = "first_name")
     @NotBlank
-    @Getter
-    @Setter
     private String firstName;
 
     @Column(name = "last_name")
     @NotBlank
-    @Getter
-    @Setter
     private String lastName;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -98,4 +76,27 @@ public class Vet {
         getSpecialtiesInternal().add(specialty);
     }
 
+    public Integer getId() {
+        return this.id;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }

@@ -15,15 +15,7 @@
  */
 package org.springframework.samples.petclinic.customers.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 
 /**
  * @author Juergen Hoeller
@@ -36,12 +28,24 @@ public class PetType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Integer id;
 
-    @Getter
-    @Setter
     @Column(name = "name")
     private String name;
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
